@@ -10,7 +10,7 @@
 
 &trackball {
     automouse-layer = <4>;
-    scroll-layers = <5>;
+//     scroll-layers = <5>;
 
     // arrows {
     //     layers = <3>;
@@ -66,7 +66,7 @@
     };
 
     behaviors {
-        lt_to_layer_0: lt_to_layer_0 {
+     lt_to_layer_0: lt_to_layer_0 {
             compatible = "zmk,behavior-hold-tap";
             label = "LAYER_TAP_TO_0";
             bindings = <&mo>, <&to_layer_0>;
@@ -79,7 +79,7 @@
     keymap {
         compatible = "zmk,keymap";
 
-        default_layer {
+ｓ        default_layer {
             bindings = <
 &kp Q             &kp W         &kp E         &kp R                        &kp T                                                          &kp Y        &kp U  &lt 5 I    &kp O    &kp P
 &kp A             &kp S         &kp D         &kp F                        &kp G        &kp LS(LG(S))                      &kp MINUS      &kp H        &kp J  &kp K      &kp L    &kp SQT
