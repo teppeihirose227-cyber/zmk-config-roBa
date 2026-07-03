@@ -11,9 +11,6 @@
 &trackball {
     automouse-layer = <4>;
     // scroll-layers = <5>;
-    scale-multiplier = <2>;
-
-    // arrows {
     //     layers = <3>;
     //     bindings =
     //         <&kp RIGHT_ARROW>,
