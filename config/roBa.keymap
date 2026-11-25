@@ -55,7 +55,7 @@
 
 /* エンコーダ1回転あたりのスクロール回数（元は10。少ないほど控えめ） */
 &sensors {
-    triggers-per-rotation = <6>;
+    triggers-per-rotation = <5>;
 };
 
 /* エンコーダ用：一定速度でスクロール（加速なし） */
