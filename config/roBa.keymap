@@ -53,8 +53,26 @@
     automouse-layer = <MOUSE>;
 };
 
+/* エンコーダ用：一定速度でスクロール（加速なし） */
+&msc {
+    time-to-max-speed-ms = <0>;
+    acceleration-exponent = <0>;
+};
+
 / {
     behaviors {
+        /*
+         * エンコーダ1目盛り＝マウスホイール約1ノッチ。
+         * 速度80/秒で25ms押す → 16ms周期の1回分（80×16/1000≒1）だけスクロールする。
+         * 時計回り＝上スクロール（以前の↑キーと同じ向き）。
+         */
+        scroll_enc: scroll_encoder {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc MOVE_Y(80)>, <&msc MOVE_Y(-80)>;
+            tap-ms = <25>;
+        };
+
         mt_ime: mt_ime {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -75,7 +93,7 @@
 &kp Z  &kp X  &kp C  &kp V  &kp B  &kp LC(SPACE)       &kp JP_RBKT    &kp N  &kp M  &kp MINUS  &kp QMARK  &kp COMMA
 &kp LCTRL  &kp LALT  &kp LGUI  &mt_ime LSHIFT SPACE  &kp ENTER  &kp BSPC  &lt NUM TAB  &mo NAV  &kp JP_COLN
             >;
-            sensor-bindings = <&inc_dec_kp UP DOWN>;
+            sensor-bindings = <&scroll_enc>;
         };
 
         nav_layer {
