@@ -78,6 +78,17 @@
             tap-ms = <25>;
         };
 
+        /*
+         * 横スクロール版（NAV を押さえている間）。Scrivener の縦書き用。
+         * 縦スクロールで「下へ進む」のと同じ回し方で、縦書きの原稿を読み進める（画面は左へ）。
+         */
+        scroll_enc_h: scroll_encoder_horizontal {
+            compatible = "zmk,behavior-sensor-rotate";
+            #sensor-binding-cells = <0>;
+            bindings = <&msc MOVE_X(-80)>, <&msc MOVE_X(80)>;
+            tap-ms = <25>;
+        };
+
         mt_ime: mt_ime {
             compatible = "zmk,behavior-hold-tap";
             #binding-cells = <2>;
@@ -109,6 +120,7 @@
 &trans   &kp LC(LEFT)   &kp LC(UP)  &kp LC(RIGHT)   &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans
 &trans  &trans  &trans  &trans  &trans  &trans  &trans  &trans  &bt BT_CLR
             >;
+            sensor-bindings = <&scroll_enc_h>;
         };
 
         num_layer {
